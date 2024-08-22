@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is the admin operations page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/mainpage.css" />
+    <style>
+        body {
+            background-image: url('/images/tabel.png');
+            background-size: cover;
+            background-position: center;
+            padding-top: 70px; /* Increased from 35px to provide more space below the navbar */
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255,255,255,.75);
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: rgba(255,255,255,1);
+        }
+
+        .alert {
+            margin-top: 20px; /* Adds top margin to the alert messages */
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            width: fit-content;
+            grid-gap: 30px;
+        }
+
+        .btn-custom {
+            background-color: #6f42c1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 5px;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 48px;
+            background: -webkit-linear-gradient(left, #007bff, #6610f2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/">Cinema World</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="/user/login" th:if="${user == null}">Login</a>
+            <div th:if="${user != null}" class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span th:text="${user.firstName}">User Name</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/user/profile">Profile</a>
+                    <a class="dropdown-item" href="/user/logout">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <h1>Hello Admin, What would you like to do today?</h1>
+    <div class="btn-container">
+        <a href="/user/all" class="btn btn-custom">Users</a>
+        <a href="/room/all" class="btn btn-custom">Rooms</a>
+        <a href="/film/all" class="btn btn-custom">Films</a>
+        <a href="/scheduling/all" class="btn btn-custom">Scheduling</a>
+        <a href="/order/all" class="btn btn-custom">Orders</a>
+        <a href="/ticket/all" class="btn btn-custom">Tickets</a>
+        <a href="/email/all" class="btn btn-custom">Emails</a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+</body>
+</html>
